@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="476.0" prefWidth="332.0" style="-fx-background-color: #D4AF37;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <TextField fx:id="txtUsername" layoutX="39.0" layoutY="289.0" prefHeight="34.0" prefWidth="254.0" promptText="Username" style="-fx-background-color: #F0E68C;" />
+      <Button layoutX="39.0" layoutY="377.0" mnemonicParsing="false" onAction="#btnLoginOnClick" prefHeight="34.0" prefWidth="254.0" style="-fx-background-color: #996515;" text="Login">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="234.0" fitWidth="332.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/cart2.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="24.0" layoutY="238.0" prefHeight="23.0" prefWidth="285.0" text="SIGN IN TO YOUR ACCOUNT" textFill="#996515">
+         <font>
+            <Font name="Sitka Small Bold" size="19.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtPassword" layoutX="39.0" layoutY="333.0" prefHeight="34.0" prefWidth="254.0" promptText="Password" style="-fx-background-color: #F0E68C;" />
+   </children>
+</AnchorPane>
