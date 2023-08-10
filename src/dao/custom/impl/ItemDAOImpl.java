@@ -4,8 +4,6 @@ import dao.CrudUtil;
 import dao.custom.ItemDAO;
 import entity.Item;
 
-import java.awt.image.RescaleOp;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ItemDAOImpl implements ItemDAO {

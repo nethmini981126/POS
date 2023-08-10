@@ -64,4 +64,12 @@ public class MenuBarController {
         playGroundAncorpane.getChildren().clear();
         playGroundAncorpane.getChildren().add(load);
     }
+
+    public void btnCustomerOnAction(ActionEvent actionEvent) throws IOException {
+        //set AddCustomerForm to playgroundancorpane that is located below the menubar
+        URL resource = getClass().getResource("/view/AddCustomerForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundAncorpane.getChildren().clear();
+        playGroundAncorpane.getChildren().add(load);
+    }
 }

@@ -45,7 +45,7 @@
       </Button>
       <MenuButton fx:id="btnMenuCustomers" layoutX="405.0" layoutY="18.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="119.0" text="Customers" AnchorPane.leftAnchor="399.0">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" onAction="#btnCustomerOnAction" text="Add Customer" />
             <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
          <font>
