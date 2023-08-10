@@ -1,13 +1,14 @@
 package dao;
 
 import dao.custom.LoginDAO;
+import dao.custom.impl.ItemDAOImpl;
 import dao.custom.impl.LoginDAOImpl;
 
 public class DAOFactory {
     public static DAOFactory daoFactory;
 
     public enum DAOTypes{
-        LOGIN
+        LOGIN, ITEM
     }
 
     public static DAOFactory getDaoFactory(){
@@ -18,10 +19,12 @@ public class DAOFactory {
         }
     }
 
-    public LoginDAO getDAO(DAOTypes daoTypes){
+    public SuperDAO getDAO(DAOTypes daoTypes){
         switch (daoTypes){
             case LOGIN:
                 return new LoginDAOImpl();
+            case ITEM:
+                return new ItemDAOImpl();
             default:
                 return null;
         }

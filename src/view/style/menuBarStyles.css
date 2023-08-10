@@ -1,0 +1,31 @@
+#btnMenuDashboard{
+    -fx-background-color:  #F0E68C;
+    -fx-background-radius: 10 0 0 10;
+}
+#btnMenuDashboard:hover{
+    -fx-background-color: #f0da8c;
+}
+
+#btnMenuOrders{
+    -fx-background-color:  #F0E68C;
+    -fx-background-radius: 0 0 0 0 ;
+}
+#btnMenuOrders:hover{
+    -fx-background-color: #f0da8c;
+}
+
+#btnMenuCustomers{
+    -fx-background-color:  #F0E68C;
+    -fx-background-radius: 0 0 0 0 ;
+}
+#btnMenuCustomers:hover{
+    -fx-background-color: #f0da8c;
+}
+
+#btnMenuItems{
+    -fx-background-color:  #F0E68C;
+    -fx-background-radius: 0 10 10 0 ;
+}
+#btnMenuItems:hover{
+    -fx-background-color: #f0da8c;
+}
