@@ -17,7 +17,7 @@
             <Font name="Cambria Bold" size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemID" layoutX="119.0" layoutY="83.0" prefHeight="25.0" prefWidth="250.0" promptText="Item ID" style="-fx-background-color: #F0E68C;" />
+      <TextField fx:id="txtItemID" editable="false" layoutX="119.0" layoutY="83.0" prefHeight="25.0" prefWidth="250.0" promptText="Item ID" style="-fx-background-color: #F0E68C;" />
       <TextField fx:id="txtItemName" layoutX="119.0" layoutY="127.0" prefHeight="25.0" prefWidth="250.0" promptText="Item Name" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="125.0" />
       <Label layoutX="35.0" layoutY="85.0" prefHeight="20.0" prefWidth="77.0" text="Item ID : ">
          <font>
@@ -34,7 +34,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemPrice" layoutX="119.0" layoutY="174.0" prefHeight="25.0" prefWidth="250.0" promptText="Item Price" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="166.0" />
+      <TextField fx:id="txtItemPrice" layoutX="119.0" layoutY="174.0" onKeyReleased="#txtPriceOnKeyRelease" prefHeight="25.0" prefWidth="250.0" promptText="Item Price" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="166.0" />
       <TextField fx:id="txtBatchNo" layoutX="515.0" layoutY="84.0" prefHeight="25.0" prefWidth="250.0" promptText="Batch No" style="-fx-background-color: #F0E68C;" />
       <TextField fx:id="txtSupplier" layoutX="515.0" layoutY="128.0" prefHeight="25.0" prefWidth="250.0" promptText="Supplier" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="125.0" />
       <Label layoutX="431.0" layoutY="85.0" prefHeight="20.0" prefWidth="77.0" text="Batch No : ">
@@ -53,20 +53,25 @@
          </font>
       </Label>
       <Separator layoutY="242.0" prefHeight="13.0" prefWidth="800.0" />
-      <Button layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddItemOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD">
+      <Button layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddItemOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="547.0" layoutY="233.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #F0E68C;" text="CLEAR">
+      <Button layoutX="547.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #F0E68C;" text="CLEAR" textFill="#996515">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView layoutX="14.0" layoutY="270.0" prefHeight="347.0" prefWidth="771.0" style="-fx-background-color: #F0E68C;">
+      <TableView fx:id="tblItems" layoutX="15.0" layoutY="273.0" prefHeight="301.0" prefWidth="771.0" style="-fx-background-color: #F0E68C;">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn fx:id="colItemId" prefWidth="91.0" text="ItemID" />
+          <TableColumn fx:id="colItemName" prefWidth="181.0" text="Item Name" />
+            <TableColumn fx:id="colBatchNo" minWidth="0.0" prefWidth="90.0" text="BatchNo" />
+            <TableColumn fx:id="colItemPrice" prefWidth="84.0" text="Item Price" />
+            <TableColumn fx:id="colQty" minWidth="0.0" prefWidth="69.0" text="Quantity" />
+            <TableColumn fx:id="colSupplier" prefWidth="84.0" text="Supplier" />
+            <TableColumn fx:id="colExpDate" prefWidth="171.0" text="Exp Date" />
         </columns>
       </TableView>
       <Label layoutX="35.0" layoutY="211.0" prefHeight="20.0" prefWidth="84.0" text="Quantity :">
@@ -74,7 +79,20 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="txtItemQty" layoutX="119.0" layoutY="215.0" prefHeight="25.0" prefWidth="250.0" promptText="Quantity" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="208.0" />
+      <TextField fx:id="txtItemQty" layoutX="119.0" layoutY="215.0" onKeyReleased="#txtQtyOnKeyRelease" prefHeight="25.0" prefWidth="250.0" promptText="Quantity" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="208.0" />
       <DatePicker fx:id="pickerExpDate" layoutX="515.0" layoutY="166.0" prefHeight="25.0" prefWidth="250.0" style="-fx-background-color: #F0E68C;" />
+      <Label fx:id="lblOnlyNumPrice" layoutX="119.0" layoutY="191.0" prefHeight="17.0" prefWidth="250.0" text="Enter only numbers" textFill="#dd0808" visible="false" />
+      <Label fx:id="lblOnlyNumQty" layoutX="119.0" layoutY="234.0" prefHeight="17.0" prefWidth="250.0" text="Enter only numbers" textFill="#dd0808" visible="false" />
+      <Separator layoutY="591.0" prefHeight="13.0" prefWidth="800.0" />
+      <Button layoutX="666.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="UPDATE" textFill="KHAKI">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="547.0" layoutY="582.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="DELETE" textFill="KHAKI">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

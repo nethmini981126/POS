@@ -4,7 +4,13 @@ import bo.custom.CustomerBO;
 import dao.DAOFactory;
 import dao.custom.CustomerDAO;
 import dto.CustomerDTO;
+import dto.ItemDTO;
 import entity.Customer;
+import entity.Item;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import java.util.ArrayList;
 
 public class CustomerBoImpl implements CustomerBO {
 
@@ -23,5 +29,30 @@ public class CustomerBoImpl implements CustomerBO {
         );
         //save customer via customerDAO
         return customerDAO.save(customer);
+    }
+
+    @Override
+    public String getNextCustomerID() {
+        String LastCustomerID = customerDAO.getLastCustomerID();
+        int lastnumber = Integer.parseInt(LastCustomerID.substring(1));
+        return String.format("C%03d",++lastnumber);
+    }
+
+    @Override
+    public ObservableList<CustomerDTO> getAllCustomers() {
+
+        ArrayList<Customer> allCustomers = customerDAO.getAllCustomers();
+        ObservableList<CustomerDTO> allCustomersForTable  = FXCollections.observableArrayList();
+        for (Customer c : allCustomers){
+            allCustomersForTable.add(new CustomerDTO(
+                    c.getCustomerID(),
+                    c.getFirstName(),
+                    c.getLastName(),
+                    c.getNic(),
+                    c.getAddress(),
+                    c.getContactNumber()
+            ));
+        }
+        return allCustomersForTable;
     }
 }
