@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lombok.SneakyThrows;
 import util.ObjectPasser;
 
 import java.io.IOException;
@@ -33,11 +34,18 @@ public class MenuBarController {
     public Button btnMenuDashboard;
     public AnchorPane playGroundAncorpane;
 
+    @SneakyThrows // handle exception
     public void initialize(){
         //automatically run this initialize method
         txtUserFullName.setText(ObjectPasser.userFullName);
         startClock();
         setCurrentDate();
+
+        //set dashboard to playgroundancorpane when initializing
+        URL resource = getClass().getResource("/view/Dashboard.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundAncorpane.getChildren().clear();
+        playGroundAncorpane.getChildren().add(load);
     }
 
     private void setCurrentDate() {
@@ -71,5 +79,14 @@ public class MenuBarController {
         Parent load = FXMLLoader.load(resource);
         playGroundAncorpane.getChildren().clear();
         playGroundAncorpane.getChildren().add(load);
+    }
+
+    public void btnDashboardOpenOnAction(ActionEvent actionEvent) throws IOException {
+        //set DashboardForm to playgroundancorpane that is located below the menubar
+        URL resource = getClass().getResource("/view/Dashboard.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundAncorpane.getChildren().clear();
+        playGroundAncorpane.getChildren().add(load);
+
     }
 }

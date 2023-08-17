@@ -17,4 +17,8 @@ public interface CustomerDAO extends SuperDAO {
 
     public boolean updateCustomer(Customer customer);
 
+    public Customer findCustomerByContactNumber(String contactNumber);
+
+
+
 }
