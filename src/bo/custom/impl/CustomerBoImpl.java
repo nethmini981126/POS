@@ -55,4 +55,32 @@ public class CustomerBoImpl implements CustomerBO {
         }
         return allCustomersForTable;
     }
+
+    @Override
+    public CustomerDTO getCustomerById(String customerID) {
+        Customer customerByID = customerDAO.getCustomerById(customerID);
+        if(customerByID != null){
+            return new CustomerDTO(
+                    customerByID.getCustomerID(),
+                    customerByID.getFirstName(),
+                    customerByID.getLastName(),
+                    customerByID.getNic(),
+                    customerByID.getAddress(),
+                    customerByID.getContactNumber()
+            );
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateCustomer(CustomerDTO customerDTO) {
+        return customerDAO.updateCustomer(new Customer(
+                customerDTO.getCustomerID(),
+                customerDTO.getFirstName(),
+                customerDTO.getLastName(),
+                customerDTO.getNic(),
+                customerDTO.getAddress(),
+                customerDTO.getContactNumber()
+        ));
+    }
 }

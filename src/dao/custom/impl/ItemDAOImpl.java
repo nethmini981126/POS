@@ -84,4 +84,22 @@ public class ItemDAOImpl implements ItemDAO {
         }
         return null;
     }
+
+    @Override
+    public boolean updateItem(Item item) {
+        try{
+            return CrudUtil.executeUpdate("UPDATE item SET itemName=?, batchNumber=?, price=?, qty=?, supplier=?, expireDate=? WHERE itemID=?",
+                    item.getItemName(),
+                    item.getBatchNumber(),
+                    item.getPrice(),
+                    item.getQty(),
+                    item.getSupplier(),
+                    item.getExpDate(),
+                    item.getItemID()
+            );
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
 }

@@ -33,6 +33,7 @@ public class AddItemController {
     public Button btnADD;
     private int selectedIndex = -1;
     private ObservableList<ItemDTO> allItems;
+    private boolean isEdit = false;
 
     ItemBO itemBO = (ItemBO) BOFactory.getBoFactory().getBo(BOFactory.BoTypes.ITEM);
 
@@ -62,33 +63,50 @@ public class AddItemController {
         tblItems.setItems(allItems);
     }
 
-    private void loadItemDataToFields(ItemDTO selectedItem){
-        ItemDTO selectedItemDetails = itemBO.getItemById(selectedItem.getItemID());
-        txtItemID.setText(selectedItemDetails.getItemID());
-        txtItemName.setText(selectedItemDetails.getItemName());
-        txtItemPrice.setText(String.format("%.2f",selectedItemDetails.getPrice()));
-        txtItemQty.setText(String.format("%.2f",selectedItemDetails.getQty()));
-        txtSupplier.setText(selectedItemDetails.getSupplier());
-        txtBatchNo.setText(selectedItemDetails.getBatchNumber());
-        pickerExpDate.getEditor().setText(String.valueOf(selectedItemDetails.getExpDate()));
-    }
-
     public void btnAddItemOnAction(ActionEvent actionEvent) {
         boolean allFieldsFilled = true;
-        if(
-                txtItemID.getText().isEmpty() ||
-                txtItemName.getText().isEmpty() ||
-                txtItemPrice.getText().isEmpty() ||
-                txtItemQty.getText().isEmpty() ||
-                txtBatchNo.getText().isEmpty() ||
-                txtSupplier.getText().isEmpty() ||
-                pickerExpDate.getEditor().getText().isEmpty()
-        ){
-            allFieldsFilled = false;
-        }
 
-        if(allFieldsFilled){
-            ItemDTO itemDTO = new ItemDTO(
+        if(!isEdit){
+            if(
+                    txtItemID.getText().isEmpty() ||
+                            txtItemName.getText().isEmpty() ||
+                            txtItemPrice.getText().isEmpty() ||
+                            txtItemQty.getText().isEmpty() ||
+                            txtBatchNo.getText().isEmpty() ||
+                            txtSupplier.getText().isEmpty() ||
+                            pickerExpDate.getEditor().getText().isEmpty()
+            ){
+                allFieldsFilled = false;
+            }
+
+            if(allFieldsFilled){
+                ItemDTO itemDTO = new ItemDTO(
+                        txtItemID.getText(),
+                        txtItemName.getText(),
+                        txtBatchNo.getText(),
+                        Double.parseDouble(txtItemPrice.getText()),
+                        Double.parseDouble(txtItemQty.getText()),
+                        txtSupplier.getText(),
+                        Date.valueOf(LocalDate.now())
+                );
+                //save item
+                itemBO.saveItem(itemDTO);
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Item added successfully!");
+                alert.show();
+                //Show item on table
+                setDataToTable();
+                //clear fields
+                clearField();
+                //generate next ID
+                generateAndSetNextID();
+
+            }else{
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Fill all fields!");
+                alert.show();
+            }
+        }else{
+            //updata item
+            boolean updated = itemBO.updateItem(new ItemDTO(
                     txtItemID.getText(),
                     txtItemName.getText(),
                     txtBatchNo.getText(),
@@ -96,23 +114,17 @@ public class AddItemController {
                     Double.parseDouble(txtItemQty.getText()),
                     txtSupplier.getText(),
                     Date.valueOf(LocalDate.now())
-            );
-            //save item
-            itemBO.saveItem(itemDTO);
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Item added successfully!");
-            alert.show();
-            //Show item on table
-            setDataToTable();
-            //clear fields
-            clearField();
-            //generate next ID
-            generateAndSetNextID();
-
-        }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION,"Fill all fields!");
-            alert.show();
+            ));
+            if(updated){
+                Alert alert = new Alert(Alert.AlertType.INFORMATION,"Successfully Updated!");
+                alert.show();
+                clearField();
+                initialize();
+                btnADD.setText("ADD");
+                btnADD.setStyle("-fx-background-color:  #996515");
+                isEdit=false;
+            }
         }
-
     }
 
     private void clearField() {
@@ -154,15 +166,29 @@ public class AddItemController {
 
     public void btnClearOnAction(ActionEvent actionEvent) {
         clearField();
+        generateAndSetNextID();
     }
 
     public void btnDeleteOnAction(ActionEvent actionEvent) {
+    }
+
+    private void loadItemDataToFields(ItemDTO selectedItem){
+        ItemDTO selectedItemDetails = itemBO.getItemById(selectedItem.getItemID());
+        txtItemID.setText(selectedItemDetails.getItemID());
+        txtItemName.setText(selectedItemDetails.getItemName());
+        txtItemPrice.setText(String.format("%.2f",selectedItemDetails.getPrice()));
+        txtItemQty.setText(String.format("%.2f",selectedItemDetails.getQty()));
+        txtSupplier.setText(selectedItemDetails.getSupplier());
+        txtBatchNo.setText(selectedItemDetails.getBatchNumber());
+        pickerExpDate.getEditor().setText(String.valueOf(selectedItemDetails.getExpDate()));
     }
 
     public void btnEditOnAction(ActionEvent actionEvent) {
         if(selectedIndex != -1){
             loadItemDataToFields(allItems.get(selectedIndex));
             btnADD.setText("UPDATE");
+            btnADD.setStyle("-fx-background-color: #c0392b");
+            isEdit = true;
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR,"Please select Item first..");
             alert.show();

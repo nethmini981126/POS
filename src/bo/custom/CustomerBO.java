@@ -12,4 +12,8 @@ public interface CustomerBO extends SuperBO {
     public String getNextCustomerID();
 
     public ObservableList<CustomerDTO> getAllCustomers();
+
+    public CustomerDTO getCustomerById(String customerID);
+
+    public boolean updateCustomer(CustomerDTO customerDTO);
 }

@@ -61,4 +61,41 @@ public class CustomerDAOImpl implements CustomerDAO {
         }
         return allCustomers;
     }
+
+    @Override
+    public Customer getCustomerById(String customerID) {
+        try{
+            ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM customer WHERE customerID=?",customerID);
+            if(resultSet.next()){
+                return new Customer(
+                        resultSet.getString("customerID"),
+                        resultSet.getString("firstName"),
+                        resultSet.getString("lastName"),
+                        resultSet.getString("nic"),
+                        resultSet.getString("address"),
+                        resultSet.getString("contactNumber")
+                );
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateCustomer(Customer customer) {
+        try{
+            return CrudUtil.executeUpdate("UPDATE customer SET firstName=?, lastName=?, nic=?, address=?, contactNumber=? WHERE customerID=?",
+                    customer.getFirstName(),
+                    customer.getLastName(),
+                    customer.getNic(),
+                    customer.getAddress(),
+                    customer.getContactNumber(),
+                    customer.getCustomerID()
+            );
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
 }

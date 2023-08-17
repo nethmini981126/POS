@@ -13,4 +13,6 @@ public interface ItemDAO extends SuperDAO {
     public ArrayList<Item> getAllItems();
 
     public Item getItemById(String itemID);
+
+    public boolean updateItem(Item item);
 }

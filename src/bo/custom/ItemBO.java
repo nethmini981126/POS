@@ -14,6 +14,8 @@ public interface ItemBO extends SuperBO {
 
     public ItemDTO getItemById(String itemID);
 
+    public boolean updateItem(ItemDTO itemDTO);
+
 
 
 }

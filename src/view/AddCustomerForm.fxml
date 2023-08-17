@@ -52,17 +52,17 @@
          </font>
       </Label>
       <Separator layoutY="242.0" prefHeight="13.0" prefWidth="800.0" />
-      <Button layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD">
+      <Button fx:id="btnADD" layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="547.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #F0E68C;" text="CLEAR">
+      <Button layoutX="547.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #F0E68C;" text="CLEAR" textFill="#996515">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TableView fx:id="tblCustomers" layoutX="14.0" layoutY="270.0" prefHeight="347.0" prefWidth="771.0" style="-fx-background-color: #F0E68C;">
+      <TableView fx:id="tblCustomers" layoutX="14.0" layoutY="270.0" prefHeight="304.0" prefWidth="771.0" style="-fx-background-color: #F0E68C;">
          <columns>
             <TableColumn fx:id="colCustomerID" prefWidth="97.0" text="customerID" />
             <TableColumn fx:id="colFirstName" prefWidth="122.0" text="First Name" />
@@ -73,5 +73,16 @@
          </columns>
       </TableView>
       <TextField fx:id="txtNIC" layoutX="515.0" layoutY="166.0" prefHeight="25.0" prefWidth="250.0" promptText="NIC" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="166.0" />
+      <Separator layoutX="10.0" layoutY="601.0" prefHeight="13.0" prefWidth="792.0" />
+      <Button layoutX="676.0" layoutY="592.0" mnemonicParsing="false" onAction="#btnEditOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #c0392b;" text="EDIT" textFill="KHAKI">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <Button layoutX="557.0" layoutY="592.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="DELETE" textFill="KHAKI">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
