@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ItemBoImpl implements ItemBO {
 
@@ -86,5 +87,32 @@ public class ItemBoImpl implements ItemBO {
                 itemDTO.getSupplier(),
                 itemDTO.getExpDate()
         ));
+    }
+
+    @Override
+    public HashMap<String, String> getItemNamesAndIDs() {
+        return itemDAO.getItemNames();
+    }
+
+    @Override
+    public ItemDTO getItemByName(String itemName) {
+        Item itemByName = itemDAO.getItemByName(itemName);
+        if(itemByName != null){
+            return new ItemDTO(
+                    itemByName.getItemID(),
+                    itemByName.getItemName(),
+                    itemByName.getBatchNumber(),
+                    itemByName.getPrice(),
+                    itemByName.getQty(),
+                    itemByName.getSupplier(),
+                    itemByName.getExpDate()
+            );
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateItemQty(String itemID, double itemQty) {
+        return itemDAO.updateItemQty(itemID,itemQty);
     }
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" style="-fx-background-color: #D4AF37 #996515;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="800.0" style="-fx-background-color: #D4AF37 #996515;" stylesheets="@style/menuBarStyles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddCustomerController">
    <children>
       <Label layoutX="35.0" layoutY="14.0" prefHeight="44.0" prefWidth="199.0" text="ADD CUSTOMERS" textFill="#996515">
          <font>
@@ -52,12 +52,12 @@
          </font>
       </Label>
       <Separator layoutY="242.0" prefHeight="13.0" prefWidth="800.0" />
-      <Button fx:id="btnADD" layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD" textFill="KHAKI">
+      <Button fx:id="btnADD" layoutX="666.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnAddCustomerOnAction" prefHeight="32.0" prefWidth="99.0" text="ADD" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="547.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #F0E68C;" text="CLEAR" textFill="#996515">
+      <Button fx:id="btnCustomerClear" layoutX="547.0" layoutY="233.0" mnemonicParsing="false" onAction="#btnClearOnAction" prefHeight="32.0" prefWidth="99.0" text="CLEAR" textFill="#996515">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -73,13 +73,13 @@
          </columns>
       </TableView>
       <TextField fx:id="txtNIC" layoutX="515.0" layoutY="166.0" prefHeight="25.0" prefWidth="250.0" promptText="NIC" style="-fx-background-color: #F0E68C;" AnchorPane.topAnchor="166.0" />
-      <Separator layoutX="10.0" layoutY="601.0" prefHeight="13.0" prefWidth="792.0" />
-      <Button layoutX="676.0" layoutY="592.0" mnemonicParsing="false" onAction="#btnEditOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #c0392b;" text="EDIT" textFill="KHAKI">
+      <Separator layoutX="4.0" layoutY="589.0" prefHeight="13.0" prefWidth="792.0" />
+      <Button fx:id="btnCustomerEdit" layoutX="670.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnEditOnAction" prefHeight="32.0" prefWidth="99.0" text="EDIT" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button layoutX="557.0" layoutY="592.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="DELETE" textFill="KHAKI">
+      <Button fx:id="btnCustomerDelete" layoutX="551.0" layoutY="580.0" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="32.0" prefWidth="99.0" text="DELETE" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

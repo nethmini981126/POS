@@ -87,6 +87,7 @@ public class CustomerBoImpl implements CustomerBO {
     @Override
     public CustomerDTO getCustomerByContactNumber(String contactNumber) {
         Customer customerByCNo = customerDAO.findCustomerByContactNumber(contactNumber);
+        if(customerByCNo != null) {
             return new CustomerDTO(
                     customerByCNo.getCustomerID(),
                     customerByCNo.getFirstName(),
@@ -95,5 +96,7 @@ public class CustomerBoImpl implements CustomerBO {
                     customerByCNo.getAddress(),
                     customerByCNo.getContactNumber()
             );
+        }
+        return null;
     }
 }

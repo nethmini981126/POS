@@ -1,0 +1,13 @@
+
+_
+java:S11925"IDefine a constant instead of duplicating this literal "lastName" 3 times.(ßã ›
+`
+java:S11924"JDefine a constant instead of duplicating this literal "firstName" 3 times.(ğçüÕ
+^
+java:S11927"HDefine a constant instead of duplicating this literal "address" 3 times.(Õûâ¿
+d
+java:S11928"NDefine a constant instead of duplicating this literal "contactNumber" 3 times.(ğ…í‚
+a
+java:S1192$"KDefine a constant instead of duplicating this literal "customerID" 4 times.(™÷¡Ë
+>
+java:S1128"(Remove this unused import 'entity.Item'.(ÏÂã

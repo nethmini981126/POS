@@ -30,7 +30,8 @@ public class AddItemController {
     public TableColumn colSupplier;
     public TableColumn colExpDate;
     public TableView tblItems;
-    public Button btnADD;
+    public Button btnADDItem;
+    public Button btnDeleteItem;
     private int selectedIndex = -1;
     private ObservableList<ItemDTO> allItems;
     private boolean isEdit = false;
@@ -120,8 +121,8 @@ public class AddItemController {
                 alert.show();
                 clearField();
                 initialize();
-                btnADD.setText("ADD");
-                btnADD.setStyle("-fx-background-color:  #996515");
+                btnADDItem.setText("ADD");
+                btnADDItem.setStyle("-fx-background-color:  #996515");
                 isEdit=false;
             }
         }
@@ -186,8 +187,8 @@ public class AddItemController {
     public void btnEditOnAction(ActionEvent actionEvent) {
         if(selectedIndex != -1){
             loadItemDataToFields(allItems.get(selectedIndex));
-            btnADD.setText("UPDATE");
-            btnADD.setStyle("-fx-background-color: #c0392b");
+            btnADDItem.setText("UPDATE");
+            btnADDItem.setStyle("-fx-background-color: #c0392b");
             isEdit = true;
         }else {
             Alert alert = new Alert(Alert.AlertType.ERROR,"Please select Item first..");

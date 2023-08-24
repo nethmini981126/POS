@@ -13,22 +13,24 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="780.0" style="-fx-background-color: #D4AF37 #996515;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="780.0" style="-fx-background-color: #D4AF37 #996515;" stylesheets="@style/menuBarStyles.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="KHAKI" height="620.0" layoutX="1.0" layoutY="-1.0" stroke="KHAKI" strokeType="INSIDE" width="346.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="KHAKI" height="620.0" layoutX="1.0" layoutY="-1.0" stroke="KHAKI" strokeType="INSIDE" width="351.0" />
       <Label layoutX="10.0" layoutY="472.0" prefHeight="29.0" prefWidth="85.0" text="Sub Total">
          <font>
             <Font name="Cambria" size="14.0" />
          </font>
       </Label>
-      <TableView fx:id="tblallitems" layoutX="5.0" layoutY="44.0" prefHeight="380.0" prefWidth="336.0">
+      <TableView fx:id="tblallitems" layoutX="-1.0" layoutY="44.0" prefHeight="380.0" prefWidth="351.0">
          <columns>
-            <TableColumn fx:id="colItemCode" prefWidth="129.0" text="ItemCode" />
-            <TableColumn fx:id="colQty" prefWidth="100.0" text="Qty" />
-            <TableColumn fx:id="colPrice" prefWidth="106.0" text="Price" />
+            <TableColumn fx:id="colItemCode" prefWidth="84.0" text="ItemCode" />
+            <TableColumn fx:id="colQty" prefWidth="57.0" text="Qty" />
+            <TableColumn fx:id="colUnitPrice" prefWidth="70.0" text="Unit Price" />
+            <TableColumn fx:id="colDiscount" prefWidth="56.0" text="Discount" />
+            <TableColumn fx:id="colItemTotal" prefWidth="83.0" text="Total" />
          </columns>
       </TableView>
-      <Button fx:id="btnRemove" layoutX="242.0" layoutY="432.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #c0392b;" text="REMOVE" textFill="KHAKI">
+      <Button fx:id="btnRemove" layoutX="242.0" layoutY="432.0" mnemonicParsing="false" onAction="#ItemRemoveOnAction" prefHeight="29.0" prefWidth="99.0" text="REMOVE" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -66,12 +68,12 @@
             <Font name="Cambria Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="btnClearOrder" layoutX="234.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" style="-fx-background-color: #c0392b;" text="CLEAR ORDER" textFill="KHAKI">
+      <Button fx:id="btnClearOrder" layoutX="234.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" text="CLEAR ORDER" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnPay" layoutX="124.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="PAY">
+      <Button fx:id="btnPay" layoutX="124.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" text="PAY">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -122,7 +124,7 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <ComboBox layoutX="367.0" layoutY="279.0" prefHeight="26.0" prefWidth="218.0" promptText="Select ItemID" style="-fx-background-color: #f0e68c;" />
+      <ComboBox fx:id="cmbItemSelector" layoutX="367.0" layoutY="279.0" onAction="#showQtyAndUnitPrice" prefHeight="26.0" prefWidth="218.0" promptText="Select ItemID" style="-fx-background-color: #f0e68c;" />
       <Label layoutX="367.0" layoutY="323.0" prefHeight="22.0" prefWidth="163.0" text="Quantity on hand :">
          <font>
             <Font name="Cambria Bold" size="18.0" />
@@ -133,17 +135,17 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="lblUnitPrice" layoutX="519.0" layoutY="326.0" prefHeight="22.0" prefWidth="73.0" text="0" textFill="#171616">
+      <Label fx:id="lblQty" layoutX="519.0" layoutY="326.0" prefHeight="22.0" prefWidth="73.0" text="0" textFill="#171616">
          <font>
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="519.0" layoutY="355.0" prefHeight="22.0" prefWidth="73.0" text="0.00">
+      <Label fx:id="lblUnitPrice" layoutX="519.0" layoutY="355.0" prefHeight="22.0" prefWidth="73.0" text="0.00">
          <font>
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Label layoutX="370.0" layoutY="420.0" prefHeight="20.0" prefWidth="142.0" text="Description :">
+      <Label layoutX="370.0" layoutY="420.0" prefHeight="20.0" prefWidth="142.0" text="ItemID">
          <font>
             <Font name="Cambria" size="15.0" />
          </font>
@@ -168,12 +170,12 @@
             <Font name="Cambria Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="btnClear" layoutX="661.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="107.0" style="-fx-background-color: #c0392b;" text="CLEAR" textFill="KHAKI">
+      <Button fx:id="btnClear" layoutX="661.0" layoutY="570.0" mnemonicParsing="false" onAction="#itemDetailsClearOnAction" prefHeight="29.0" prefWidth="107.0" text="CLEAR" textFill="KHAKI">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <Button fx:id="btnAddCart" layoutX="551.0" layoutY="570.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="ADD TO CART">
+      <Button fx:id="btnAddCart" layoutX="551.0" layoutY="570.0" mnemonicParsing="false" onAction="#AddToCartOnAction" prefHeight="29.0" prefWidth="99.0" text="ADD TO CART">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -199,14 +201,14 @@
             <Font name="Cambria Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnFind" layoutX="565.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnFindOnAction" prefHeight="36.0" prefWidth="99.0" style="-fx-background-color: #996515;" text="FIND">
+      <Button fx:id="btnFind" layoutX="565.0" layoutY="45.0" mnemonicParsing="false" onAction="#btnFindOnAction" prefHeight="36.0" prefWidth="99.0" stylesheets="@style/menuBarStyles.css" text="FIND">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Button>
-      <TextField fx:id="txtDescription" layoutX="529.0" layoutY="414.0" prefHeight="27.0" prefWidth="239.0" promptText="Description" style="-fx-background-color: #F0E68C;" />
+      <TextField fx:id="txtItemID" layoutX="529.0" layoutY="414.0" prefHeight="27.0" prefWidth="239.0" promptText="ItemID" style="-fx-background-color: #F0E68C;" />
       <TextField fx:id="txtRequestAmount" layoutX="529.0" layoutY="454.0" prefHeight="27.0" prefWidth="239.0" promptText="Request Amount" style="-fx-background-color: #F0E68C;" />
-      <TextField fx:id="txtDiscount" layoutX="529.0" layoutY="495.0" prefHeight="27.0" prefWidth="239.0" promptText="Discount" style="-fx-background-color: #F0E68C;" />
+      <TextField fx:id="txtDiscount" layoutX="529.0" layoutY="495.0" onKeyReleased="#CalculateItemTotal" prefHeight="27.0" prefWidth="239.0" promptText="Discount" style="-fx-background-color: #F0E68C;" />
       <TextField fx:id="txtContactNumber" layoutX="365.0" layoutY="45.0" prefHeight="36.0" prefWidth="199.0" promptText="Contact Number" style="-fx-background-color: #F0E68C;" />
    </children>
 </AnchorPane>

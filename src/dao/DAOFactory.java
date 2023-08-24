@@ -1,15 +1,13 @@
 package dao;
 
 import dao.custom.LoginDAO;
-import dao.custom.impl.CustomerDAOImpl;
-import dao.custom.impl.ItemDAOImpl;
-import dao.custom.impl.LoginDAOImpl;
+import dao.custom.impl.*;
 
 public class DAOFactory {
     public static DAOFactory daoFactory;
 
     public enum DAOTypes{
-        LOGIN, ITEM, CUSTOMER
+        LOGIN, ITEM, CUSTOMER, ORDER, ORDERDETAILS
     }
 
     public static DAOFactory getDaoFactory(){
@@ -28,6 +26,10 @@ public class DAOFactory {
                 return new ItemDAOImpl();
             case CUSTOMER:
                 return new CustomerDAOImpl();
+            case ORDER:
+                return new OrderDAOImpl();
+            case ORDERDETAILS:
+                return new OrderDetailsDAOImpl();
             default:
                 return null;
         }

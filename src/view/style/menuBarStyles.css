@@ -29,3 +29,108 @@
 #btnMenuItems:hover{
     -fx-background-color: #f0da8c;
 }
+
+#btnFind{
+    -fx-background-color:   #996515;
+}
+#btnFind:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnAddCart{
+    -fx-background-color:   #996515;
+}
+#btnAddCart:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnPay{
+    -fx-background-color:   #996515;
+}
+#btnPay:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnClearOrder{
+    -fx-background-color:    #c0392b;
+}
+#btnClearOrder:hover{
+    -fx-background-color:   #801818;
+}
+
+#btnClear{
+    -fx-background-color:    #c0392b;
+}
+#btnClear:hover{
+    -fx-background-color:   #801818;
+}
+
+#btnRemove{
+    -fx-background-color:    #c0392b;
+}
+#btnRemove:hover{
+    -fx-background-color:   #801818;
+}
+
+#btnLogin{
+    -fx-background-color:   #996515;
+}
+#btnLogin:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnADDItem{
+    -fx-background-color:   #996515;
+}
+#btnADDItem:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnDeleteItem{
+    -fx-background-color:   #996515;
+}
+#btnDeleteItem:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnItemEdit{
+    -fx-background-color:   #c0392b;
+}
+#btnItemEdit:hover{
+    -fx-background-color:   #801818;
+}
+
+#btnItemClear{
+    -fx-background-color:    #F0E68C;
+}
+#btnItemClear:hover{
+    -fx-background-color:   #eadc5f;
+}
+
+#btnADD{
+    -fx-background-color:   #996515;
+}
+#btnADD:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnCustomerDelete{
+    -fx-background-color:   #996515;
+}
+#btnCustomerDelete:hover{
+    -fx-background-color:   #3d0c02;
+}
+
+#btnCustomerEdit{
+    -fx-background-color:   #c0392b;
+}
+#btnCustomerEdit:hover{
+    -fx-background-color:   #801818;
+}
+
+#btnCustomerClear{
+    -fx-background-color:    #F0E68C;
+}
+#btnCustomerClear:hover{
+    -fx-background-color:   #eadc5f;
+}

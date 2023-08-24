@@ -7,6 +7,7 @@ import entity.Item;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ItemDAOImpl implements ItemDAO {
 
@@ -97,6 +98,57 @@ public class ItemDAOImpl implements ItemDAO {
                     item.getExpDate(),
                     item.getItemID()
             );
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
+    @Override
+    public HashMap<String, String> getItemNames() {
+        HashMap<String, String> itemsAndNames = new HashMap<>();
+        try {
+            ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM item");
+            while(resultSet.next()){
+                itemsAndNames.put(
+                        resultSet.getString("itemID"),
+                        resultSet.getString("itemName")
+                );
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return itemsAndNames;
+    }
+
+    @Override
+    public Item getItemByName(String itemName) {
+        try{
+            ResultSet resultSet = CrudUtil.executeQuery("SELECT * FROM item WHERE itemName=?",itemName);
+            if(resultSet.next()){
+                return new Item(
+                        resultSet.getString("itemID"),
+                        resultSet.getString("itemName"),
+                        resultSet.getString("batchNumber"),
+                        resultSet.getDouble("price"),
+                        resultSet.getDouble("qty"),
+                        resultSet.getString("supplier"),
+                        resultSet.getDate("expireDate")
+                );
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public boolean updateItemQty(String id, double qty) {
+        try{
+            return (CrudUtil.executeUpdate("UPDATE item SET qty=? WHERE itemID = ?",
+                    qty,
+                    id
+            ));
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }

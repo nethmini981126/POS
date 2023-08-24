@@ -4,6 +4,7 @@ import dao.SuperDAO;
 import entity.Item;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public interface ItemDAO extends SuperDAO {
     public boolean save(Item item);
@@ -15,4 +16,11 @@ public interface ItemDAO extends SuperDAO {
     public Item getItemById(String itemID);
 
     public boolean updateItem(Item item);
+
+    public HashMap<String, String> getItemNames();
+
+    public Item getItemByName(String itemName);
+
+    public boolean updateItemQty(String id, double qty);
+
 }

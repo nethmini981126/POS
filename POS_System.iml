@@ -11,4 +11,7 @@
     <orderEntry type="library" name="jfoenix-17-0.1.1" level="project" />
     <orderEntry type="library" name="lombok" level="project" />
   </component>
+  <component name="SonarLintModuleSettings">
+    <option name="uniqueId" value="4afe4ab0-e94a-41d5-bf6c-5b4ff9ee7f53" />
+  </component>
 </module>
